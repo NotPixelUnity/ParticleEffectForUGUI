@@ -20,7 +20,7 @@ namespace Coffee.UIParticleInternal
         static UIExtraCallbacks()
         {
             Canvas.willRenderCanvases += OnBeforeCanvasRebuild;
-            Logging.LogMulticast(typeof(Canvas), "willRenderCanvases", message: "ctor");
+            //Logging.LogMulticast(typeof(Canvas), "willRenderCanvases", message: "ctor");
         }
 
         /// <summary>
@@ -69,8 +69,7 @@ namespace Coffee.UIParticleInternal
 
             CanvasUpdateRegistry.IsRebuildingLayout();
             Canvas.willRenderCanvases += OnAfterCanvasRebuild;
-            Logging.LogMulticast(typeof(Canvas), "willRenderCanvases",
-                message: "InitializeAfterCanvasRebuild");
+            //Logging.LogMulticast(typeof(Canvas), "willRenderCanvases", message: "InitializeAfterCanvasRebuild");
         }
 
 #if UNITY_EDITOR
