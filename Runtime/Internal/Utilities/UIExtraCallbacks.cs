@@ -64,12 +64,20 @@ namespace Coffee.UIParticleInternal
         /// </summary>
         private static void InitializeAfterCanvasRebuild()
         {
-            if (s_IsInitializedAfterCanvasRebuild) return;
-            s_IsInitializedAfterCanvasRebuild = true;
+            try
+            {
+                if (s_IsInitializedAfterCanvasRebuild) return;
+                
+                s_IsInitializedAfterCanvasRebuild = true;
 
-            CanvasUpdateRegistry.IsRebuildingLayout();
-            Canvas.willRenderCanvases += OnAfterCanvasRebuild;
-            //Logging.LogMulticast(typeof(Canvas), "willRenderCanvases", message: "InitializeAfterCanvasRebuild");
+                CanvasUpdateRegistry.IsRebuildingLayout();
+                Canvas.willRenderCanvases += OnAfterCanvasRebuild;
+                //Logging.LogMulticast(typeof(Canvas), "willRenderCanvases", message: "InitializeAfterCanvasRebuild");
+            }
+            catch (Exception e)
+            {
+                //ignore
+            }
         }
 
 #if UNITY_EDITOR
